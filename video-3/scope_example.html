@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="angular.js"></script>
+  <script src="scope_example.js"></script>
+  <style>
+    .ng-scope { 
+      border: 1px solid red;
+      margin: 10px;
+      padding: 5px;
+    }
+  </style>
+</head>
+
+<body ng-app="myApp">
+
+<h1>Apples Controller</h1>
+<ul ng-controller="ApplesController">
+  <li>Apples: {{ apples }}</li>
+  <li>Oranges: {{ oranges }}</li>
+</ul>
+
+<h1>Oranges Controller</h1>
+<ul ng-controller="OrangesController">
+  <li>Apples: {{ apples }}</li>
+  <li>Oranges: {{ oranges }}</li>
+</ul>
+
+<h1>ng-repeat Directive</h1>
+<ul>
+  <li ng-repeat="item in [1,2,3]">item #{{ item }}</li>
+  <li>item #{{ item }}</li>
+</ul>
+
+<h1>ng-repeat directive inside apples controller</h1>
+<ul ng-controller="ApplesController">
+  <li ng-repeat="item in [1,2,3]">item #{{ item }}, apples: {{ apples }}</li>
+</ul>
+
+<h1>Oranges controller nested inside Apples Controller</h1>
+<div ng-controller="ApplesController">
+  <ul ng-controller="OrangesController">
+    <li>Apples: {{ apples }}</li>
+    <li>Oranges: {{ oranges }}</li>
+  </ul>
+</div>
+
+</body>
+</html>

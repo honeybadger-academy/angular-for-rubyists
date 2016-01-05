@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="angular.js"></script>
+  <script src="scope_example.js"></script>
+  <style>
+      .ng-scope {
+        border: 1px solid red;
+        margin: 10px;
+        padding: 5px;
+      }
+
+      .ng-scope .ng-scope {
+        border-color: green;
+      }
+
+      .ng-scope .ng-scope .ng-scope {
+        border-color: blue;
+      }
+  </style>
+</head>
+
+<body ng-app="myApp">
+
+<h1>ApplesController</h1>
+<div ng-controller="ApplesController">
+    <p>Apples: {{ apples }}</p>
+    <p>Oranges: {{ oranges }}</p>
+</div>
+
+<h1>OrangesController</h1>
+<div ng-controller="OrangesController">
+    <p>Apples: {{ apples }}</p>
+    <p>Oranges: {{ oranges }}</p>
+</div>
+
+<h1>ng-repeat directive</h1>
+<ul>
+    <li ng-repeat="item in [1,2,3]">item #{{ item }}</li>
+    <li>item #{{ item }}</li>
+</ul>
+
+<h1>ng-repeat inside of ApplesController</h1>
+<div ng-controller="ApplesController">
+    <ul>
+        <li ng-repeat="item in [1,2,3]">item #{{ item }} / Apples: #{{ apples }}</li>
+    </ul>
+</div>
+
+<h1>OrangesController inside of ApplesController</h1>
+<div ng-controller="ApplesController">
+    <div ng-controller="OrangesController">
+        <p>Apples: {{ apples }}</p>
+        <p>Oranges: {{ oranges }}</p>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
