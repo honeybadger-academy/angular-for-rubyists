@@ -1,0 +1,27 @@
+<div ng-app="gameApp" ng-controller="GameListController">
+  <table>
+    <tr ng-repeat="item in games">
+      <td>{{ item.name }}</td>
+      <td>{{ item.rating }} stars</td>
+      <td><a href="" ng-click="destroy(item)">Delete</a></td>
+      <td><a href="" ng-click="editing = !editing">Edit</a></td>
+      <td>
+        <form ng-submit="update(item); editing = false;" ng-show="editing">
+          <input type="text" ng-model="item.name"/>
+          <select ng-model="item.rating" ng-options="v + ' stars' for v in [1,2,3,4]">
+          </select>
+          <input type="submit"/>
+        </form>
+      </td>
+    </tr>
+  </table>
+
+
+  <form ng-submit="create(newGameData); newGameData={};">
+    <input type="text" ng-model="newGameData.name" placeholder="Game Name"/>
+    <select ng-model="newGameData.rating" ng-options="v + ' stars' for v in [1,2,3,4]">
+    </select>
+    <input type="submit"/>
+  </form>
+
+</div>

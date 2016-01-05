@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="angular.js"></script>
+  <script src="angular-resource.js"></script>  
+  <script src="app.js"></script>
+</head>
+
+<body ng-app="gameApp">
+  <ul ng-controller="GameListController">
+    <li ng-repeat="item in games">
+      {{ item.name }}: {{ item.rating }} stars
+      |
+      <a href="#" ng-click="delete(item)">Delete</a>
+      |
+      <a href="#" ng-click="editing=true">Edit</a>
+      <form ng-submit="update(item); editing=false" ng-show="editing">
+      	<input type="text" ng-model="item.name"/>
+      	<select ng-options="v for v in [1,2,3,4]" ng-model="item.rating"></select>
+      	<input type="submit"/>
+	  </form>
+    </li>
+
+    <form ng-submit="create()">
+    	<input type="text" ng-model="gameName"/>
+    	<select ng-options="v for v in [1,2,3,4]", ng-model="gameRating"></select>
+    	<input type="submit"/>
+    <form>
+
+  </li>
+</body>
+
+</html>
